@@ -3,7 +3,6 @@ import {
   ReactKeycloakProvider,
   useKeycloak as originalUseKeycloak,
 } from '@react-keycloak/web';
-
 import type { KeycloakInstance } from 'keycloak-js';
 import { AuthProviderProps } from '@react-keycloak/core';
 

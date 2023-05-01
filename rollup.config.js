@@ -24,6 +24,14 @@ export default {
     },
   ],
   external: [...Object.keys(packageJson.peerDependencies || {})],
+  onwarn: (warning, warn) => {
+    // Ignore the "this" has been rewritten to "undefined" warnings
+    if (warning.code === 'THIS_IS_UNDEFINED') {
+      return;
+    }
+    // Pass on other warnings
+    warn(warning);
+  },
   plugins: [
     peerDepsExternal(),
     resolve({

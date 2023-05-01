@@ -12,7 +12,8 @@
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "release": "npm publish --access public"
+    "release": "npm publish --access public",
+    "semantic-release-dry-run": "semantic-release --dry-run"
   },
   "repository": {
     "type": "git",

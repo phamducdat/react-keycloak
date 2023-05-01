@@ -14,7 +14,6 @@
     "build-storybook": "build-storybook",
     "prepublishOnly": "npm run build",
     "release": "npm publish --access public",
-    "semantic-release": "semantic-release --branches main"
   },
   "repository": {
     "type": "git",

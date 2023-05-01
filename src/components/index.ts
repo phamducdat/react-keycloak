@@ -1,2 +1,2 @@
-export { default as CustomReactKeycloakProvider } from './keycloak';
+export { default as ReactKeycloakDomainPermissionProvider } from './keycloak';
 export * from './keycloak';

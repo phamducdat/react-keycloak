@@ -6,7 +6,7 @@ import {
 import type { KeycloakInstance } from 'keycloak-js';
 import { AuthProviderProps } from '@react-keycloak/core';
 
-const CustomReactKeycloakProvider: React.FC<
+const ReactKeycloakDomainPermissionProvider: React.FC<
   AuthProviderProps<KeycloakInstance>
 > = (props) => {
   const { authClient, children, ...rest } = props;
@@ -20,4 +20,4 @@ const CustomReactKeycloakProvider: React.FC<
 
 export const useKeycloak = originalUseKeycloak;
 
-export default CustomReactKeycloakProvider;
+export default ReactKeycloakDomainPermissionProvider;

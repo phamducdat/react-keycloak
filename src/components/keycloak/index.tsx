@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  ReactKeycloakProvider,
-  useKeycloak as originalUseKeycloak,
-} from '@react-keycloak/web';
+import { ReactKeycloakProvider } from '@react-keycloak/web';
 import type { KeycloakInstance } from 'keycloak-js';
 import { AuthProviderProps } from '@react-keycloak/core';
 
@@ -17,5 +14,4 @@ const ReactKeycloakDomainPermissionProvider: React.FC<
     </ReactKeycloakProvider>
   );
 };
-export const useKeycloak = originalUseKeycloak;
 export default ReactKeycloakDomainPermissionProvider;

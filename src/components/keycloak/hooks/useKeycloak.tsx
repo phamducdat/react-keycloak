@@ -4,8 +4,9 @@ import { useKeycloak as originalUseKeycloak } from '@react-keycloak/web';
 const useKeycloak = () => {
   const { initialized, keycloak, ...rest } = originalUseKeycloak();
   const customLogin = () => {
-    console.log('Custom login');
-    keycloak.login();
+    keycloak.login().then((response) => {
+      console.log('dat with response in login = ', response);
+    });
   };
   return {
     initialized,

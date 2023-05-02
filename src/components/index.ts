@@ -1,2 +1,4 @@
-export { default as ReactKeycloakDomainPermissionProvider } from './keycloak';
-export * from './keycloak';
+import ReactKeycloakDomainPermissionProvider from './keycloak';
+import useKeycloak from './keycloak/hooks/useKeycloak';
+
+export { ReactKeycloakDomainPermissionProvider, useKeycloak };

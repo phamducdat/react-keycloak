@@ -17,6 +17,7 @@ const useKeycloak = () => {
       console.log('dat with keycloak = ', keycloak);
 
       const userInfo = await keycloak.loadUserInfo();
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
       checkAccess(userInfo); // Perform the check after the login process is complete
     } catch (error) {
       console.error('Error during login:', error);

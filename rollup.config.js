@@ -8,6 +8,8 @@ import builtins from 'rollup-plugin-node-builtins';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import { terser } from 'rollup-plugin-terser';
 import packageJson from './package.json';
+import replace from 'rollup-plugin-replace';
+import './env.mjs';
 
 export default {
   input: 'src/index.ts',
@@ -37,6 +39,12 @@ export default {
     resolve({
       browser: true, // Resolve browser-compatible modules
       preferBuiltins: true,
+    }),
+    replace({
+      'process.env.API_URL': JSON.stringify(process.env.API_URL),
+      'process.env.ANOTHER_VARIABLE': JSON.stringify(
+        process.env.ANOTHER_VARIABLE
+      ),
     }),
 
     commonjs(),

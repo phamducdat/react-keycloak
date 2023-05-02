@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useKeycloak as originalUseKeycloak } from '@react-keycloak/web';
 
+interface UserInfo {
+  sub: string;
+  email_verified: boolean;
+  preferred_username: string;
+}
+
 const useKeycloak = () => {
   const { initialized, keycloak, ...rest } = originalUseKeycloak();
   const [permission, setPermission] = useState(false);
@@ -11,11 +17,21 @@ const useKeycloak = () => {
   };
 
   const handleAuthSuccess = async () => {
-    setPermission(true);
-    console.log('Authentication successful');
-    const userInfo = await keycloak.loadUserInfo();
-    localStorage.setItem('userInfo', JSON.stringify(userInfo));
-    checkAccess(userInfo);
+    try {
+      const userInfo = (await keycloak.loadUserInfo()) as UserInfo;
+      const userId = userInfo.sub;
+      const realm = keycloak.realm;
+      const clientId = keycloak.clientId;
+      const url = `http://localhost:8000/external/v1/admin/realms/${realm}/users/${userId}/clients/${clientId}/permission`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        setPermission(false);
+      }
+      const data = await response.json();
+      setPermission(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   };
 
   useEffect(() => {

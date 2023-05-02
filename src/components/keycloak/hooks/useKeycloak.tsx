@@ -4,12 +4,14 @@ import { useKeycloak as originalUseKeycloak } from '@react-keycloak/web';
 const useKeycloak = () => {
   const { keycloak } = originalUseKeycloak();
 
+  console.log('keycloak: ', keycloak);
+
   const customLogin = async (options: any) => {
     console.log('Custom behavior before login');
 
-    await keycloak.login(options).then((response) => {
-      console.log('dat with response in keycloak login = ', response);
-    });
+    const response = await keycloak.login(options);
+
+    console.log('dat with response in keycloak login = ', response);
 
     console.log('Custom behavior after login');
   };

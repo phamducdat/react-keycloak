@@ -17,7 +17,7 @@ const useKeycloak = () => {
       const userId = userInfo.sub;
       const realm = keycloak.realm;
       const clientId = keycloak.clientId;
-      const url = `http://localhost:8000/external/v1/admin/realms/${realm}/users/${userId}/clients/${clientId}/permission`;
+      const url = `${process.env.API_URL}/external/v1/admin/realms/${realm}/users/${userId}/clients/${clientId}/permission`;
       const response = await fetch(url);
       if (!response.ok) {
         setPermission(false);

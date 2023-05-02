@@ -11,7 +11,7 @@ const useKeycloak = () => {
   };
 
   const handleAuthSuccess = async () => {
-    setPermission(false);
+    setPermission(true);
     console.log('Authentication successful');
     const userInfo = await keycloak.loadUserInfo();
     localStorage.setItem('userInfo', JSON.stringify(userInfo));
@@ -25,27 +25,11 @@ const useKeycloak = () => {
       keycloak.onAuthSuccess = undefined;
     };
   }, [keycloak]);
-  const customLogin = async () => {
-    console.log('dat with before login');
-
-    try {
-      await keycloak.login();
-      console.log('dat with keycloak = ', keycloak);
-
-      const userInfo = await keycloak.loadUserInfo();
-      checkAccess(userInfo); // Perform the check after the login process is complete
-    } catch (error) {
-      console.error('Error during login:', error);
-    } finally {
-      console.log('dat with after login');
-    }
-  };
 
   return {
     initialized,
     keycloak: {
       ...keycloak,
-      login: customLogin,
       permission: permission,
     },
     ...rest,

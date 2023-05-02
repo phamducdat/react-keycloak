@@ -11,6 +11,7 @@ const useKeycloak = () => {
 
   const customLogin = async () => {
     console.log('dat with before login');
+    localStorage.setItem('datpd', '100');
 
     try {
       await keycloak.login();

@@ -18,7 +18,6 @@ const useKeycloak = () => {
 
   return {
     ...keycloak,
-    login: customLogin,
   };
 };
 

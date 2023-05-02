@@ -11,11 +11,6 @@ const useKeycloak = () => {
   const { initialized, keycloak, ...rest } = originalUseKeycloak();
   const [permission, setPermission] = useState(false);
 
-  const checkAccess = (userInfo: any) => {
-    console.log('User information:', userInfo);
-    // Perform your access check based on the user information
-  };
-
   const handleAuthSuccess = async () => {
     try {
       const userInfo = (await keycloak.loadUserInfo()) as UserInfo;

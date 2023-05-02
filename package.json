@@ -1,6 +1,6 @@
 {
   "name": "@datpd/react-keycloak",
-  "version": "2.2.6",
+  "version": "2.2.7",
   "description": "The custom react-keycloak for domain permission",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
